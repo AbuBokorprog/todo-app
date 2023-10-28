@@ -23,7 +23,7 @@ form.onsubmit = (e) => {
     id: String(Math.random() * 1000),
   };
   todos.push(todo);
-  //   renderTask();
+  renderTask();
 };
 
 // const create = (task: string, isComplete: boolean, id: string) => {
@@ -50,8 +50,8 @@ form.onsubmit = (e) => {
 //   container.append(div);
 // };
 
-// const renderTask = () => {
-//   todos.forEach((item) => {
-//     create(item.task, item.isComplete, item.id);
-//   });
-// };
+const renderTask = () => {
+  todos.forEach((item) => {
+    // create(item.task, item.isComplete, item.id);
+  });
+};
