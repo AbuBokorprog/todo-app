@@ -39,14 +39,25 @@ const create = (task: string, isComplete: boolean, id: string) => {
 
   const div: HTMLDivElement = document.createElement("div");
   div.className = "flex justify-between items-center gap-4";
+
   const paragraph: HTMLParagraphElement = document.createElement("p");
   paragraph.innerText = `${task}`;
+
   const checkbox: HTMLInputElement = document.createElement("input");
   checkbox.setAttribute("type", "checkbox");
-  checkbox.className = "checkbox checkbox-secondary";
+  checkbox.className = "checkbox rounded-full checkbox-primary";
+  checkbox.checked = isComplete;
+
+  checkbox.onchange = () => {
+    paragraph.className = checkbox.checked
+      ? "line-through font-medium"
+      : "font-medium text-2xl";
+  };
+
   const delBtn: HTMLButtonElement = document.createElement("button");
   delBtn.innerText = "X";
   delBtn.className = "btn btn-circle btn-error";
+
   div.append(checkbox, paragraph, delBtn);
   container.append(div);
 };
