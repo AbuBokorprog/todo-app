@@ -6,8 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo App</title>
   </head>
-  <body>
-    <h1 class="text-center text-primary-400">Todo App</h1>
+  <body class="container mx-auto lg:px-32">
+    <header>
+      <h1 class="text-center text-5xl font-bold py-6 bg-primary-400">
+        Todo App
+      </h1>
+    </header>
+    <section class="my-8">
+      <div>
+        <h2 class="text-3xl font-semibold">My Day:</h2>
+      </div>
+    </section>
+    <section>
+      <form id="form" class="flex gap-2 justify-center items-center">
+        <input
+          type="text"
+          id="taskInput"
+          placeholder="Add your task"
+          class="input input-bordered input-secondary w-full"
+        />
+        <button id="btn" class="btn btn-secondary rounded-s-none">
+          Secondary
+        </button>
+      </form>
+    </section>
+    <section class="my-8">
+      <div id="taskContainer"></div>
+    </section>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
