@@ -2,7 +2,6 @@ import "./style.css";
 
 const form = document.getElementById("form") as HTMLFormElement;
 const input = document.getElementById("taskInput") as HTMLInputElement;
-// task container/ output
 const container = document.getElementById("taskContainer") as HTMLDivElement;
 
 type TODO = {
@@ -15,8 +14,6 @@ const todos: Array<TODO> = [];
 
 form.onsubmit = (e) => {
   e.preventDefault();
-  //   const task = input.value;
-  //   console.log(task);
   const todo: TODO = {
     task: input.value,
     isComplete: false,
@@ -25,18 +22,10 @@ form.onsubmit = (e) => {
   todos.unshift(todo);
   input.value = "";
   renderTask(todos);
+  //   window.localStorage.setItem("todos", JSON.stringify(todos));
 };
 
 const create = (task: string, isComplete: boolean, id: string) => {
-  //   console.log(task, isComplete, id);
-  //   container.innerHTML = `
-  //     <div class="flex justify-between items-center gap-4">
-  //     <input type="checkbox" name="" >
-  //     <p>${task}</p>
-  //     <button>X</button>
-  //     </div>
-  //     `;
-
   const div: HTMLDivElement = document.createElement("div");
   div.className = "flex justify-between py-2 items-center gap-4";
 
@@ -51,7 +40,7 @@ const create = (task: string, isComplete: boolean, id: string) => {
   checkbox.onchange = () => {
     paragraph.className = checkbox.checked
       ? "line-through font-medium"
-      : "font-medium text-2xl";
+      : "font-medium";
   };
 
   const delBtn: HTMLButtonElement = document.createElement("button");
@@ -74,6 +63,8 @@ const deleteHandler = (id: string) => {
 
 const renderTask = (todos: TODO[]) => {
   container.innerText = "";
+  //   const todo = localStorage.getItem("todos");
+  //   const to = JSON.parse(todo);
   todos.forEach((item) => {
     create(item.task, item.isComplete, item.id);
   });
