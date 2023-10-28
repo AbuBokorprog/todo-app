@@ -38,7 +38,7 @@ const create = (task: string, isComplete: boolean, id: string) => {
   //     `;
 
   const div: HTMLDivElement = document.createElement("div");
-  div.className = "flex justify-between items-center gap-4";
+  div.className = "flex justify-between py-2 items-center gap-4";
 
   const paragraph: HTMLParagraphElement = document.createElement("p");
   paragraph.innerText = `${task}`;
@@ -58,8 +58,18 @@ const create = (task: string, isComplete: boolean, id: string) => {
   delBtn.innerText = "X";
   delBtn.className = "btn btn-circle btn-error";
 
+  delBtn.onclick = () => {
+    deleteHandler(id);
+  };
+
   div.append(checkbox, paragraph, delBtn);
   container.append(div);
+};
+
+const deleteHandler = (id: string) => {
+  const del = todos.findIndex((d) => d.id === id);
+  todos.splice(del, 1);
+  renderTask(todos);
 };
 
 const renderTask = (todos: TODO[]) => {
